@@ -1,8 +1,8 @@
 [phases.setup]
-nixPkgs = ["ffmpeg", "python311"]
+nixPkgs = ["ffmpeg"]
 
 [phases.install]
 cmds = ["pip install -r requirements.txt"]
 
 [start]
-cmd = "cd backend && python app.py"
+cmd = "cd backend && gunicorn app:app --bind 0.0.0.0:$PORT --chdir backend"
